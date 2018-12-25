@@ -1,0 +1,88 @@
+Author: Oluwatimilehin Dayo-Kayode
+
+Title: 'GERP - It's like Grep, but something is Off'
+
+Purpose: This program can be used to search through al the files in a directory 
+and look for some sequence of characters, similar to the Unix grep program
+
+4/23/2017
+
+Files: FSTree.h DirNode.h main.cpp database.h database.cpp
+
+
+-database.h: This header file includes the definition of the dataBase class and 
+structs word, and emptyOrNah. It also contains the following functions that
+are instrumental to my implementation; a default constructor, a sensitivePrint
+function. an insensitivePrint function, an expandAndRehash function, an
+addToTable function, a search function. a traverseIndex function, a readFromFile
+function, a casePermutations function and a hash function. For further detailed
+descriptions of these functions and their behaviors, please see their contracts 
+in the database.cpp file.
+
+-database.cpp: This file is the implementation file for database.h. It includes
+the implementation of the member functions of the dataBase(the functions
+listed above).
+
+-main.cpp: This file receives command line arguments from the user and does
+appropriates actions based on the inputs.
+
+Compiling And Running: My program compiles by running the command, "make"
+without the quotation marks in the terminal. In order to run the program, the
+following command is required; "./gerp filepath" without the quotation
+marks in the terminal. Replace filepath with the path of the directory
+you would like to run the program on and follow the prompts of the program.
+
+Architectural Overview: The main.cpp file contains an instance of the 
+dataBase class and calls the functions in this class on the users input.
+The database.cpp file has an instance of the FSTree class in order to use the 
+getRoot which helps the program access to root node of the directory being 
+traversed. The database.cpp file also has two pointers to an instance of the 
+DirNode class; one that points to the current node as the program traverses 
+through the tree stemming from the aforementioned root node. It also has a 
+pointer to a subdir which is also an instance of the DirNode class, and that 
+keeps track of what sub directory the program is at it traverses through 
+every level of sub directories that branches off the aformentioned
+currnode pointer.
+
+
+Data Structures and Algorithms:
+I implemented this program primarily with a Hashtable. Each index of the 
+hashtable contains a struct of structs. So basically the Hashtable has a 
+struct of type emptyorNah which has a bool to keep track of whether that
+spot has been filled or not, and an instance of the struct word which 
+contains the string of word to be saved in that index, and the path index to
+access that string of characters. I made my program this way because saving
+the path where the string occured rather than the actual line would help save 
+memory even though there would be some speed decreases, I felt it was worth it.
+I also used a hashtable because not only did I feel more comfortable with it,
+but accessing data would take O(n) which would help cover up some of the 
+deficiences from saving the path location of strings rather than the actual
+line.
+
+Testing:
+I tested my hashtable implementation by first testing the add function,
+and then testing its ability to resize and rehash properly whenever the hash 
+table got filled up. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
